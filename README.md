@@ -9,5 +9,5 @@
 ## Z
 
 * Zookeeper
-  * [Document]()
-  * [Repository]()
+  * [Document](https://github.com/honeyqa/study-archive/blob/master/zookeeper.md)
+  * [Repository](https://github.com/JungMinu/zookeepr-client-nodejs)
