@@ -70,7 +70,7 @@ REST API 서버를 이용해 간단하게 요청을 받으면 RabbitMQ에 데이
 		* `ch.sendToQueue('expressTestDurable', new Buffer(msg), {persistent: true});`
 		* 하지만, `persistent`로 표시하더라도 메시지가 지워지지 않는다는것을 보장하지는 않는다.
 			* RabbitMQ가 메시지를 받고 저장하기까지 약간의 시간이 소요됨.
-		* RabbitMQ가 모든 메시지에 대해서 `fsync`를 하지 않음.
+		* RabbitMQ가 모든 메시지에 대해서 `fsync`를 하지 않음.
 			* Cache에만 저장되고, 실제로는 Disk에 저장되지 않는 경우도 있음.
 		* 더 높은 보장성을 원한다면 **[publisher confirm(Publisher Acknowledgements)](https://www.rabbitmq.com/confirms.html)**을 사용하면 된다.
 			 
