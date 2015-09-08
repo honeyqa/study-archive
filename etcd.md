@@ -1,11 +1,6 @@
-# 작성중.....
-
-
 # Title
 ## Intro.
-etcd를 이용한 죽지 않는 서버 만들기
 
-어떻게?
 
 ## [etcd](https://coreos.com/etcd/docs/latest/getting-started-with-etcd.html)
 ### etcd란
@@ -42,8 +37,6 @@ Open another terminal:
     this is awesome
 
 
-### etcdctl
-ummm...
 
 ## [node-etcd](https://www.npmjs.com/package/node-etcd)
 
@@ -66,6 +59,12 @@ For nodejs == 0.8:
     etcd.get('key', console.log);
     etcd.del('key', console.log);
 
+**.set(key, value, [options], [callback])**
+
+    etcd.set('key', 'value', {ttl: 5}, console.log);
+
+* ```ttl``` (time to live in seconds)
+
 **.create(path, value, [options], [callback])**
 
 Atomically create in-order keys.
@@ -77,13 +76,9 @@ Atomically create in-order keys.
 
 Returns an eventemitter for watching for changes on a key
 
-    watcher = etcd.watcher("key");
-    watcher.on("change", console.log); // Triggers on all changes
-    watcher.on("set", console.log);    // Triggers on specific changes (set ops)
-    watcher.on("delete", console.log); // Triggers on delete.
-    watcher2 = etcd.watcher("key", null, {recursive: true});
-    watcher2.on("error", console.log);
-
+    watcher = etcd.watcher('key');
+    watcher.on('change', console.log); // Triggers on all changes
+    
 You can cancel a watcher by calling ```.stop()```.
 
 Signals:
@@ -91,7 +86,7 @@ Signals:
 * ```change``` - emitted on value change
 * ```reconnect``` - emitted on reconnect
 * ```error``` - emitted on invalid content
-* ```<etcd action>``` - the etcd action that triggered the watcher (ex: set, delete).
+* ```<etcd action>``` - the etcd action that triggered the watcher (ex: set, delete, expire).
 * ```stop``` - watcher was canceled.
 * ```resync``` - watcher lost sync (server cleared and outdated the index).
 
@@ -104,7 +99,6 @@ Use the ```.watch()``` command in you need more direct control.
 5. etcd 초기화(setup, notify, connect)
 6. watcher 작성
 7. test
-8. result
 
 ## REFERENCE
 
